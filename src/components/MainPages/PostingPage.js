@@ -1,0 +1,1 @@
+//yazıyo musun gelmiyor su an DD:
