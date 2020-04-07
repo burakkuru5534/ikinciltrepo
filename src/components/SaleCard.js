@@ -12,18 +12,16 @@ class SaleCard extends React.Component{
         const index = sale.coverImageIndex;
         const placeholderImageUrl='https://gender.indiana.edu/images/publications/book-cover-placeholder.jpg';
         const imageUrl = sale.imageUrls.length > 0 ? sale.imageUrls[index || 0] : placeholderImageUrl;
-        console.log(imageUrl);
 
         return(
             <View style={{
                 borderColor:'#000',
                 borderWidth:1,
-                margin:2.5,
-                height:275,
+                height:300,
                 width:'40%',
-                marginRight: '5%',
+                marginRight:'1%',
                 marginBottom: 20,
-                backgroundColor:'#ddd'}}>
+                backgroundColor:'#f1f1f1'}}>
 
                 <View style={{
                         marginTop:'10%', 
@@ -31,6 +29,7 @@ class SaleCard extends React.Component{
                         alignSelf:'center',
                         height:150,
                         width:120,
+                        
                         }}>
                             <Image style={{width: 120, height: 150}} source={{uri:imageUrl}}></Image>
 

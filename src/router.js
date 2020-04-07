@@ -8,6 +8,7 @@ import Login from './components/AuthenticationPages/Login';
 import SignUp from './components/AuthenticationPages/SignUp'
 import ForgetPassword from './components/AuthenticationPages/ForgetPassword';
 import MainPage from './components/MainPages/MainPage';
+import PostingPage from './components/MainPages/PostingPage'
 
 const RouterComp = () => {
     return (
@@ -38,7 +39,8 @@ const RouterComp = () => {
 
                 </Scene>
 
-                <Scene key='main' navigationBarStyle={{backgroundColor:"#7f7f7f"}}
+                <Scene key='mainpages' initial>
+                     <Scene key='main' navigationBarStyle={{backgroundColor:"#7f7f7f"}}
                         component={MainPage}
                         title='anasayfa'
                         initial
@@ -47,6 +49,16 @@ const RouterComp = () => {
                         hideNavBar={false}
                         
                          />
+
+                    <Scene key='posting'
+                    component={PostingPage}
+                    title='İlan Ver Sayfası'
+                    
+                    />
+
+                </Scene>
+
+               
                 
 
 

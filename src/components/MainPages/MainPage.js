@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { View,Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {getUser} from '../../actions/authActions'; 
-import { ScrollView,  } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity,  } from 'react-native-gesture-handler';
 import { MenuButton } from '../../common';
 import axios from 'axios'
 import {SaleCard} from '../SaleCard';
+import { Actions } from 'react-native-router-flux';
 
 class MainPage extends Component {
 
@@ -14,12 +15,11 @@ class MainPage extends Component {
     this.state = {
       token : '',
       user:{
-        nameSurname: '' //başta böyle bi şey yapıyorum ki user get edilmeden önce 'nameSurname of undefined' hatası vermesin
+        nameSurname: ''
       },
       sales: []
     } 
-  }// yazı ??  geliyor knka ama salecard boş :D postingpageye copyala ben ordan oraya geçirim istersen :D sonra bi kapayıp açarız vs livei okey 
-
+  }
   componentDidMount(){
     this.getActiveSales();
     AsyncStorage.getItem('token').then(token => {
@@ -47,17 +47,24 @@ class MainPage extends Component {
     });
   }
   
+  
   render() {
     const { user, sales } = this.state;
     const bookCards = sales.map(sale => {
         if(sale.imageUrls.length === 0) this.getActiveSales();
-        return <SaleCard sale={sale} />
+        return (
+          
+
+              <SaleCard sale={sale} />
+
+        )
+       
     });
 
     return(
 
      <View style={{flex:4.1}}>
-       <View style={{flexDirection:'row',backgroundColor:'#bfbfbf',flex:0.1}}>
+       <View style={{marginTop:5,marginBottom:5,flexDirection:'row',flex:0.1}}>
          <MenuButton source={require('../../images/menu.png')}/>
          <MenuButton source={require('../../images/menu.png')}/>
          <MenuButton source={require('../../images/menu.png')}/>
@@ -71,8 +78,8 @@ class MainPage extends Component {
 
        <ScrollView style={{backgroundColor:'#bfbfbf',flex:3.6}}>
 
-       <View style={{ paddingLeft:'5%',
-                      paddingRight: '5%',
+       <View style={{ marginTop:30,
+                      justifyContent:'center',
                       flexDirection:'row', 
                       flexWrap: 'wrap'
                     }}>
