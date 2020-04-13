@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View,Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {getUser} from '../../actions/authActions'; 
+import {getUser} from '../../actions/authActions';
 import { ScrollView, TouchableOpacity,  } from 'react-native-gesture-handler';
 import { MenuButton } from '../../common';
 import axios from 'axios'
@@ -18,7 +18,7 @@ class MainPage extends Component {
         nameSurname: ''
       },
       sales: []
-    } 
+    }
   }
   componentDidMount(){
     this.getActiveSales();
@@ -31,7 +31,7 @@ class MainPage extends Component {
         else{
           getUser(token).then(user => this.setState({ user })); //
         }
-      }); 
+      });
     });
   }
 
@@ -46,19 +46,19 @@ class MainPage extends Component {
         console.log(error);
     });
   }
-  
-  
+
+
   render() {
     const { user, sales } = this.state;
     const bookCards = sales.map(sale => {
         if(sale.imageUrls.length === 0) this.getActiveSales();
         return (
-          
+
 
               <SaleCard sale={sale} />
 
         )
-       
+
     });
 
     return(
@@ -73,17 +73,17 @@ class MainPage extends Component {
          <MenuButton source={require('../../images/menu.png')}/>
          <MenuButton source={require('../../images/menu.png')}/>
          <MenuButton source={require('../../images/menu.png')}/>
-         
+
        </View>
 
-       <ScrollView style={{backgroundColor:'#bfbfbf',flex:3.6}}>
+       <ScrollView style={{backgroundColor:'#f1f1f1',flex:3.6}}>
 
        <View style={{ marginTop:30,
                       justifyContent:'center',
-                      flexDirection:'row', 
+                      flexDirection:'row',
                       flexWrap: 'wrap'
                     }}>
-       
+
         {bookCards}
 
        </View>
@@ -94,10 +94,10 @@ class MainPage extends Component {
           <MenuButton
           source={require('../../images/photo.png')}
           />
-          <Text>İlan Ver {user.nameSurname}</Text>
+          <Text>İlan Ver</Text>
        </View>
        <View style={{justifyContent:'flex-end',alignItems:'flex-start',flex:0.1}}>
-         
+
           <View style={{flexDirection:'row'}}>
             <View style={{marginLeft:'10%'}}>
               <MenuButton
@@ -121,10 +121,10 @@ class MainPage extends Component {
              />
             </View>
 
-            
 
 
-            
+
+
           </View>
 
        </View>
@@ -132,7 +132,7 @@ class MainPage extends Component {
      </View>
 
     )
-   
+
   }
  }
 

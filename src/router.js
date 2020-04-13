@@ -24,42 +24,48 @@ const RouterComp = () => {
                         component={Login}
                         title='login'
                         hideNavBar={true}
-                         />  
+                         />
 
-                    <Scene key='signup'                       
+                    <Scene key='signup'
                         component={SignUp}
                         title='Sign Up'
                         hideNavBar={true}
                          />
-                    <Scene key='forget'                       
+                    <Scene key='forget'
                         component={ForgetPassword}
                         title='Forget Password'
                         hideNavBar={true}
-                         />                      
+                         />
 
                 </Scene>
 
                 <Scene key='mainpages' initial>
-                     <Scene key='main' navigationBarStyle={{backgroundColor:"#7f7f7f"}}
+                     <Scene key='main'
+                            navigationBarStyle={
+                                {
+                                    backgroundColor:'#f1f1f1',
+                                    height: 80
+                                }
+                            }
                         component={MainPage}
                         title='anasayfa'
                         initial
                         renderRightButton={renderMainPageRight}
                         renderLeftButton={renderMainPageLeft}
                         hideNavBar={false}
-                        
+
                          />
 
                     <Scene key='posting'
                     component={PostingPage}
                     title='İlan Ver Sayfası'
-                    
+
                     />
 
                 </Scene>
 
-               
-                
+
+
 
 
             </Scene>

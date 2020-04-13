@@ -6,7 +6,7 @@ import Router from './router';
 import reducers from './reducers'
 
 class App extends Component {
-   
+
   render() {
 
     const store= createStore(reducers,{},applyMiddleware(ReduxThunk))
@@ -14,7 +14,7 @@ class App extends Component {
     return (
 
       <Provider store={store}>
-            
+
         <Router/>
 
       </Provider>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   buttonTextStyle: {
     borderWidth: 1,
     padding: 25,
-    backgroundColor: '#ddbb00',
+    backgroundColor: '#ffffff',
     borderRadius: 100,
     textAlign: 'center',
     color: 'white',
