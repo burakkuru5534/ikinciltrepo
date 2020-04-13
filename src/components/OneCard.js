@@ -1,31 +1,21 @@
 import React from "react";
 import { View, Text,Image, TouchableHighlight } from "react-native";
-import {goSaleDetail} from '../actions/mainActions'
-import {connect} from 'react-redux'
 
 
-class SaleCard extends React.Component{
+
+class OneCard extends React.Component{
 
     constructor(props) {
         super(props);
         
         this.state = {
            
-            _id:''
+            _id:'',
+            sale: []
            
         }
-
-        this.goToSaleDetail            = this.goToSaleDetail.bind(this);
        
     }
-
-    goToSaleDetail(){
-
-        console.log('- SaleCard.js - sale._id:',this.props.sale._id);
-        this.props.goSaleDetail(this.props.sale._id);
-    }
-
-
 
    
 
@@ -53,7 +43,7 @@ class SaleCard extends React.Component{
                         width:120,
                         
                         }}>
-                            <TouchableHighlight   onPress={this.goToSaleDetail}> 
+                            <TouchableHighlight > 
                                 <Image style={{width: 120, height: 150}} source={{uri:imageUrl}}></Image>
                             </TouchableHighlight>
 
@@ -83,11 +73,6 @@ class SaleCard extends React.Component{
     }
 }
 
-const mapStateToProps = state => {
-    const {_id} = state.main;
-    return{
-        _id
-    }
-}
 
-export default connect(mapStateToProps,{goSaleDetail})(SaleCard);
+
+export default OneCard;

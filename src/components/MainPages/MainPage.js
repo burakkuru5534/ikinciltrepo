@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View,Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {getUser} from '../../actions/authActions'; 
-import { ScrollView, TouchableOpacity,  } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import { MenuButton } from '../../common';
 import axios from 'axios'
-import {SaleCard} from '../SaleCard';
-import { Actions } from 'react-native-router-flux';
+import SaleCard from '../SaleCard';
+
+//knka bi d
 
 class MainPage extends Component {
 
@@ -20,6 +20,11 @@ class MainPage extends Component {
       sales: []
     } 
   }
+
+  
+
+
+
   componentDidMount(){
     this.getActiveSales();
     AsyncStorage.getItem('token').then(token => {
@@ -49,9 +54,10 @@ class MainPage extends Component {
   
   
   render() {
-    const { user, sales } = this.state;
+    const { sales } = this.state;
     const bookCards = sales.map(sale => {
         if(sale.imageUrls.length === 0) this.getActiveSales();
+      
         return (
           
 
@@ -84,7 +90,7 @@ class MainPage extends Component {
                       flexWrap: 'wrap'
                     }}>
        
-        {bookCards}
+          {bookCards}
 
        </View>
 
@@ -94,7 +100,7 @@ class MainPage extends Component {
           <MenuButton
           source={require('../../images/photo.png')}
           />
-          <Text>İlan Ver {user.nameSurname}</Text>
+          <Text>İlan Ver </Text>
        </View>
        <View style={{justifyContent:'flex-end',alignItems:'flex-start',flex:0.1}}>
          
@@ -136,4 +142,6 @@ class MainPage extends Component {
   }
  }
 
- export default MainPage;
+ 
+
+export default MainPage;
