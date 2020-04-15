@@ -1,14 +1,11 @@
 import React from 'react';
 import {Scene, Router} from 'react-native-router-flux';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-
 import {Image, StyleSheet,TouchableOpacity } from 'react-native';
 import Login from './components/AuthenticationPages/Login';
 import SignUp from './components/AuthenticationPages/SignUp'
 import ForgetPassword from './components/AuthenticationPages/ForgetPassword';
 import MainPage from './components/MainPages/MainPage';
-import PostingPage from './components/MainPages/PostingPage'
+import SaleDetails from './components/MainPages/SaleDetails';
 
 const RouterComp = () => {
     return (
@@ -56,10 +53,11 @@ const RouterComp = () => {
 
                          />
 
-                    <Scene key='posting'
-                    component={PostingPage}
-                    title='İlan Ver Sayfası'
 
+                    <Scene key='saledetails'
+                    component={SaleDetails}
+                    title='İlan Detay Sayfası'
+                    
                     />
 
                 </Scene>
