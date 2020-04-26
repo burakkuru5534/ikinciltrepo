@@ -24,7 +24,7 @@ class MainPage extends Component {
     }
   }
 
-  
+
 
 
 
@@ -60,7 +60,7 @@ class MainPage extends Component {
     const { sales } = this.state;
     const bookCards = sales.map(sale => {
         if(sale.imageUrls.length === 0) this.getActiveSales();
-      
+
         return (
 
 
@@ -85,7 +85,7 @@ class MainPage extends Component {
 
        </View>
 
-       <ScrollView style={{backgroundColor:'#f1f1f1',flex:3.6}}>
+       <ScrollView style={{backgroundColor:'#f1f1f1',flex:3.7}}>
 
        <View style={{ marginTop:30,
                       justifyContent:'center',
@@ -98,13 +98,18 @@ class MainPage extends Component {
 
        </ScrollView>
 
-       <View style={{backgroundColor:'#bfbfbf',justifyContent:'center',alignItems:'center',flex:0.3}}>
+       <View style={{
+           backgroundColor:'#f8f8f8',
+           justifyContent:'center',
+           alignItems:'center',
+           flex:0.2
+       }}>
           <MenuButton
           source={require('../../images/photo.png')}
           />
 
-          <Text>İlan Ver</Text>
-                  
+          <Text>Kitap Sat</Text>
+
        </View>
        <View style={{justifyContent:'flex-end',alignItems:'flex-start',flex:0.1}}>
 

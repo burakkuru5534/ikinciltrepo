@@ -9,15 +9,15 @@ class SaleCard extends React.Component{
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
-           
+
             _id:''
-           
+
         }
 
         this.goToSaleDetail            = this.goToSaleDetail.bind(this);
-       
+
     }
 
     goToSaleDetail(){
@@ -29,7 +29,7 @@ class SaleCard extends React.Component{
 
 
 
-   
+
 
     render(){
         const { sale } = this.props;
@@ -49,7 +49,7 @@ class SaleCard extends React.Component{
                 shadowRadius: 6.68,
 
                 elevation: 11,
-                height:300,
+                paddingBottom: 10,
                 width:'42%',
                 padding: '2%',
                 marginRight:'3%',
@@ -65,7 +65,7 @@ class SaleCard extends React.Component{
                         width:120,
 
                         }}>
-                            <TouchableHighlight   onPress={this.goToSaleDetail}> 
+                            <TouchableHighlight   onPress={this.goToSaleDetail}>
                                 <Image style={{width: 120, height: 150}} source={{uri:imageUrl}}></Image>
                             </TouchableHighlight>
 
@@ -76,7 +76,7 @@ class SaleCard extends React.Component{
                     fontWeight: 'bold',
                     marginBottom: 8
                 }}>
-                    {sale.title}
+                    {sale.title.length > 20 ? sale.title.substr(0,20) + "..." : sale.title}
                 </Text>
 
                 <Text style={{
