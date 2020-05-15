@@ -45,7 +45,7 @@ const RouterComp = () => {
                                 }
                             }
                         component={MainPage}
-                        title='anasayfa'
+                        title='Anasayfa'
                         initial
                         renderRightButton={renderMainPageRight}
                         renderLeftButton={renderMainPageLeft}
@@ -55,9 +55,13 @@ const RouterComp = () => {
 
 
                     <Scene key='saledetails'
-                    component={SaleDetails}
-                    title='İlan Detay Sayfası'
-                    
+                           navigationBarStyle={
+                               {
+                                   height: 0
+                               }
+                           }
+                           component={SaleDetails}
+                           title='İlan Detay Sayfası'
                     />
 
                 </Scene>

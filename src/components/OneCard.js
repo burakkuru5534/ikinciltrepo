@@ -7,17 +7,17 @@ class OneCard extends React.Component{
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
-           
+
             _id:'',
             sale: []
-           
+
         }
-       
+
     }
 
-   
+
 
     render(){
         const { sale } = this.props;
@@ -36,14 +36,14 @@ class OneCard extends React.Component{
                 backgroundColor:'#f1f1f1'}}>
 
                 <View style={{
-                        marginTop:'10%', 
-                        marginBottom:'10%', 
+                        marginTop:'10%',
+                        marginBottom:'10%',
                         alignSelf:'center',
                         height:150,
                         width:120,
-                        
+
                         }}>
-                            <TouchableHighlight > 
+                            <TouchableHighlight >
                                 <Image style={{width: 120, height: 150}} source={{uri:imageUrl}}></Image>
                             </TouchableHighlight>
 

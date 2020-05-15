@@ -1,24 +1,28 @@
 import React,{ Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Image, Text } from 'react-native';
 import axios from 'axios';
 import {connect} from 'react-redux'
-
+import OneCard from '../OneCard';
 
 class SaleDetails extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            sales: [],
+            sale: {},
             _id:'',
 
         }
-        
+
 
     }
 
+    componentDidMount() {
+        this.getSale();
+    }
+
     // TODO : id ye göre sale seçip onacard içine gönder onu detail içinde döndür
-   
+
 
     getSale(){
 
@@ -26,18 +30,22 @@ class SaleDetails extends Component {
         const {_id} = this.props;
         console.log('- SaleDetails.js - this.props _id:',_id)
 
-        const url = 'https://ikincilt-temp-api.herokuapp.com/sales'+_id;
+        const url = 'https://ikincilt-temp-api.herokuapp.com/sale/' + _id;
         console.log('- SaleDetails.js - url:',url)
 
-        axios.get(url).then((response) => {
-            const { sales } = response.data;
+        axios.get(url).then( response => {
+            const { sale } = response.data;
             this.setState({
-                sales: sales
+                sale
+            });
+            this.props.navigation.setParams({
+                title: sale.title,
+                backTitle: 'Anasayfa'
             });
         }).catch((error) => {
             console.log(error);
         });
-        
+
    /*     const url = 'https://ikincilt-temp-api.herokuapp.com/sale/'+_id;
         axios.get(url)
         .then((response) => {
@@ -59,41 +67,93 @@ class SaleDetails extends Component {
     }
 
     render(){
-        const { sales} = this.state;
-        console.log('- SaleDetails.js - sale:',sales);
-
-        const oneBook = sales.map(sale => {
-            console.log('- SaleDetails.js - sale:',sales);
-            
-            this.getSale();
-            console.log('- SaleDetails.js - sale:',sales);
-
-          
-            return (
-              
-    
-                  <OneCard _id={_id} />
-    
-            )
-           
-        });
-    
+        const { sale } = this.state;
+        console.log(sale.imageUrls)
         return(
-            <View>
-                <ScrollView style={{backgroundColor:'#bfbfbf',flex:3.6}}>
+            <ScrollView style={{backgroundColor: '#f1f1f1'}}>
 
-                    <View style={{ marginTop:30,
-                                justifyContent:'center',
-                                flexDirection:'row', 
+
+                    <View style={{
+                                flexDirection:'column',
                                 flexWrap: 'wrap'
                                 }}>
 
-                        {oneBook}
+                        {sale.title &&
+                            <>
+                                <View style={{height: 300, width: '100%'}}>
+                                    <Image source={{uri: sale.imageUrls[0] }}
+                                           style={{width: '100%', height: '100%'}} />
+                                </View>
+
+                                <View style={{
+                                    marginTop:15,
+                                    paddingLeft: '3%',
+                                    flexWrap: 'wrap',
+                                    flexDirection: 'row'
+                                }}>
+                                    <Text style={{
+                                        flex:8,
+                                        textAlign: 'left',
+                                        fontSize: 17,
+                                        fontFamily: 'Helvetica',
+                                        fontWeight: 'bold'
+                                    }}>
+                                        {sale.title}
+                                    </Text>
+                                    <Text style={{ flex:2, textAlign: 'center', fontSize: 17, fontFamily: 'Verdana' }}>
+                                        {sale.firstPrice} TL
+                                    </Text>
+                                </View>
+                                <View style={{
+                                    marginTop:2,
+                                    paddingLeft: '3%',
+                                    flexWrap: 'wrap',
+                                    flexDirection: 'column'
+                                }}>
+                                    <Text style={{
+                                        flex:1,
+                                        textAlign: 'left',
+                                        fontSize: 17,
+                                        fontFamily: 'Helvetica',
+                                        color: '#333333'
+                                    }}>
+                                        {sale.author}
+                                    </Text>
+                                </View>
+                                <View
+                                    style={{
+                                        borderBottomColor: '#999999',
+                                        borderBottomWidth: 1,
+                                        margin: 10
+                                    }}
+                                />
+                                <View style={{
+                                    marginTop:10,
+                                    paddingLeft: '3%',
+                                    marginLeft: '3%',
+                                    flexWrap: 'wrap',
+                                    flexDirection: 'row',
+                                    borderLeftColor: '#555555',
+                                    borderLeftWidth: 4,
+                                }}>
+                                    <Text style={{
+                                        flex:1,
+                                        textAlign: 'left',
+                                        fontSize: 17,
+                                        fontFamily: 'Georgia'
+                                    }}>
+                                        "{sale.description}"
+                                    </Text>
+                                </View>
+                            </>
+                        }
+
+
 
                     </View>
 
-                </ScrollView>
-            </View>
+            </ScrollView>
+
         )
     }
 }
